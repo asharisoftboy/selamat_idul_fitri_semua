@@ -24,6 +24,8 @@
             --gold: #FFD700;
             --gold-light: #FFED4A;
             --gold-dark: #D4AF37;
+            --green: #27ae60;
+            --green-light: #2ecc71;
         }
 
         body {
@@ -345,6 +347,132 @@
             font-size: 1.3rem;
         }
 
+        /* Memory Card Section */
+        .memory-section {
+            margin: 40px 0;
+            animation: fadeInUp 1s ease-out 0.85s both;
+        }
+
+        .memory-card-container {
+            perspective: 1000px;
+            display: inline-block;
+        }
+
+        .memory-card {
+            width: 320px;
+            height: 420px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .memory-card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .memory-card-front {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+            border: 3px solid var(--gold);
+            backdrop-filter: blur(20px);
+        }
+
+        .memory-card-back {
+            background: linear-gradient(145deg, var(--green) 0%, var(--green-light) 100%);
+            border: 3px solid var(--gold);
+            transform: rotateY(180deg);
+            backdrop-filter: blur(20px);
+        }
+
+        .memory-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .memory-title {
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .memory-hint {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .memory-hint-icon {
+            font-size: 1.2rem;
+        }
+
+        .memory-content {
+            text-align: center;
+        }
+
+        .memory-back-title {
+            font-size: 1.4rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .memory-list {
+            list-style: none;
+            text-align: left;
+            color: var(--white);
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+
+        .memory-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .memory-list li:last-child {
+            border-bottom: none;
+        }
+
+        .memory-list-icon {
+            font-size: 1.2rem;
+        }
+
+        .memory-close-hint {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
         /* Greeting Card */
         .greeting-card {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
@@ -406,47 +534,63 @@
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
 
-        /* QRIS Section */
+        /* QRIS Section - Fixed Size Container */
         .qris-section {
-    margin-top: 60px;
-    padding: 30px 20px;
-    text-align: center;
-}
+            margin: 40px 0;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
 
-/* container biar ga melebar */
-.qris-container {
-    max-width: 300px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 20px;
-    background: linear-gradient(145deg, #1f7a4c, #14532d);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
+        .qris-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-/* judul */
-.qris-title {
-    color: #f6e27a;
-    margin-bottom: 10px;
-}
+        .qris-container {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 215, 0, 0.2);
+            border: 3px solid var(--gold);
+            animation: pulse 3s ease-in-out infinite;
+        }
 
-/* gambar QRIS */
-.qris-icon img {
-    width: 150px;
-    max-width: 100%;
-    border-radius: 12px;
-}
+        .qris-title {
+            color: var(--deep-blue);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
 
-/* teks */
-.qris-text {
-    margin-top: 10px;
-    font-size: 14px;
-    opacity: 0.9;
-}
+        /* Fixed Size QRIS Image Container */
+        .qris-image-container {
+            width: 250px;
+            height: 250px;
+            background: var(--white);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+        }
 
-.qris-hint {
-    font-size: 12px;
-    opacity: 0.7;
-}
+        .qris-image {
+            width: 230px;
+            height: 230px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .qris-hint {
+            color: var(--deep-blue);
+            font-size: 1rem;
+            margin-top: 15px;
+            font-weight: 600;
+            text-align: center;
+        }
+
         /* Share Button */
         .share-btn {
             background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
@@ -526,14 +670,25 @@
                 font-size: 2rem;
             }
 
+            .memory-card {
+                width: 280px;
+                height: 380px;
+            }
+
             .greeting-card {
                 padding: 35px 25px;
                 margin: 20px 15px;
             }
 
-            .qris-placeholder {
-                width: 180px;
-                height: 180px;
+            /* QRIS tetap fixed size di mobile */
+            .qris-image-container {
+                width: 220px;
+                height: 220px;
+            }
+
+            .qris-image {
+                width: 200px;
+                height: 200px;
             }
 
             .personal-greeting {
@@ -686,12 +841,52 @@
                 <span id="audioText">Putar Takbiran</span>
             </button>
 
+            <!-- Memory Card Section -->
+            <div class="memory-section">
+                <div class="memory-card-container">
+                    <div class="memory-card" id="memoryCard">
+                        <!-- Front of Card -->
+                        <div class="memory-card-face memory-card-front">
+                            <div class="memory-icon">📖</div>
+                            <h3 class="memory-title">Kenangan Ramadhan</h3>
+                            <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; line-height: 1.6;">
+                                Bulan penuh berkah yang penuh dengan ibadah, doa, dan kebersamaan
+                            </p>
+                            <div class="memory-hint">
+                                <span class="memory-hint-icon">👆</span>
+                                <span>Klik untuk membuka kenangan</span>
+                            </div>
+                        </div>
+                        <!-- Back of Card -->
+                        <div class="memory-card-face memory-card-back">
+                            <div class="memory-content">
+                                <h3 class="memory-back-title">🌙 Momen Berharga Ramadhan</h3>
+                                <ul class="memory-list">
+                                    <li><span class="memory-list-icon">🤲</span> Sahur bersama keluarga</li>
+                                    <li><span class="memory-list-icon">📿</span> Tarawih di masjid</li>
+                                    <li><span class="memory-list-icon">📖</span> Tilawah Al-Quran</li>
+                                    <li><span class="memory-list-icon">🍽️</span> Berbuka dengan kurma</li>
+                                    <li><span class="memory-list-icon">🌙</span> Lailatul Qadar</li>
+                                    <li><span class="memory-list-icon">🤝</span> Sedekah & berbagi</li>
+                                    <li><span class="memory-list-icon">🕌</span> I'tikaf di 10 malam terakhir</li>
+                                    <li><span class="memory-list-icon">💚</span> Doa dan dzikir</li>
+                                </ul>
+                                <div class="memory-close-hint">
+                                    <span>👆</span>
+                                    <span>Klik untuk menutup</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Greeting Card -->
             <div class="greeting-card">
                 <div class="card-icon">🌙</div>
                 <h3 class="card-title">Taqqaballahu Minna Wa Minkum</h3>
                 <p class="card-message">
-                    Akhirnya datanglah hari kemenangan kita yaitu Hari Raya Idul-Fitri setelah 30 hari kita menahan lapar dan haus di bulan Ramadhan semoga kita semua masih bertemu dengan bulan suci Ramadhan.
+                    Semoga Allah menerima amal ibadah kita dan mengampuni segala dosa kita. 
                     <span id="personalizedGreeting"></span>
                 </p>
                 <p class="card-message" style="font-style: italic; color: var(--gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);">
@@ -700,19 +895,16 @@
                 </p>
             </div>
 
-            <!-- QRIS Section -->
+            <!-- QRIS Section - Fixed Size -->
             <div class="qris-section">
-                <div class="qris-container">
-                    <p class="qris-title">🎁 THR Digital</p>
+                <div class="qris-wrapper">
                     <div class="qris-container">
-                        <div class="qris-icon scan-box">
-                            <img src="qris.PNG" alt="QRIS Ashari:D">
-                            <div class="scan-line></div>
+                        <p class="qris-title">🎁 THR Digital</p>
+                        <div class="qris-image-container">
+                            <img src="qris.PNG" alt="QRIS Code" class="qris-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22230%22 height=%22230%22><rect fill=%22%23f5f5f5%22 width=%22230%22 height=%22230%22/><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2214%22>QRIS Image</text></svg>'">
                         </div>
-                        
-                        <p class="qris-text">QRIS Placeholder</p>
+                        <p class="qris-hint">Scan untuk THR 😆</p>
                     </div>
-                    <p class="qris-hint">Scan untuk THR 😆</p>
                 </div>
             </div>
 
@@ -768,6 +960,12 @@
         // Update countdown every second
         setInterval(updateCountdown, 1000);
         updateCountdown(); // Initial call
+
+        // Memory Card Flip
+        const memoryCard = document.getElementById('memoryCard');
+        memoryCard.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
 
         // Audio Player Simulation
         let isPlaying = false;
@@ -830,7 +1028,7 @@
                 `Dari: Ashari Saefataher`;
             
             const fullMessage = baseMessage + personalMessage + closing;
-            shareBtn.href = `https://wa.me/62881012137318?text=${fullMessage}`;
+            shareBtn.href = `https://wa.me/?text=${fullMessage}`;
         }
 
         // Initialize share link
