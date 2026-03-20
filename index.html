@@ -280,38 +280,6 @@
             font-weight: 500;
         }
 
-        /* Name Input Section */
-        .name-section {
-            margin: 30px 0;
-            animation: fadeInUp 1s ease-out 0.7s both;
-        }
-
-        .name-input {
-            background: rgba(255, 255, 255, 0.25);
-            border: 2px solid var(--gold);
-            border-radius: 50px;
-            padding: 15px 25px;
-            font-size: 1rem;
-            color: var(--white);
-            width: 100%;
-            max-width: 320px;
-            text-align: center;
-            outline: none;
-            transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-        }
-
-        .name-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .name-input:focus {
-            border-color: var(--gold-light);
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-            transform: scale(1.02);
-        }
-
         /* Audio Button */
         .audio-btn {
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
@@ -591,31 +559,6 @@
             text-align: center;
         }
 
-        /* Share Button */
-        .share-btn {
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-            border: none;
-            border-radius: 50px;
-            padding: 18px 40px;
-            font-size: 1.1rem;
-            color: var(--white);
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            margin: 20px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
-            text-decoration: none;
-            animation: fadeInUp 1s ease-out 1.1s both, bounce 2s ease-in-out infinite;
-        }
-
-        .share-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 35px rgba(37, 211, 102, 0.7);
-        }
-
         /* Footer */
         .footer {
             text-align: center;
@@ -830,10 +773,6 @@
                 </div>
             </div>
 
-            <!-- Name Input -->
-            <div class="name-section">
-                <input type="text" class="name-input" id="nameInput" placeholder="Masukkan nama Anda..." maxlength="30">
-            </div>
 
             <!-- Audio Button -->
             <button class="audio-btn" id="audioBtn">
@@ -907,15 +846,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Share Button -->
-            <a href="#" class="share-btn" id="shareBtn">
-                <span>📱</span>
-                <span>Bagikan ke WhatsApp</span>
-            </a>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <p>Dibuat dengan <span class="footer-heart">❤</span> oleh Ashari Saefataher</p>
@@ -995,45 +925,6 @@
                 audio.pause();
             }
         });
-
-        // Name Input Personalization
-        const nameInput = document.getElementById('nameInput');
-        const personalizedGreeting = document.getElementById('personalizedGreeting');
-
-        nameInput.addEventListener('input', function() {
-            const name = this.value.trim();
-            if (name) {
-                personalizedGreeting.innerHTML = `<br><br>Kepada <span class="personalized-name">${name}</span>, semoga kebahagiaan dan kesuksesan selalu menyertaimu.`;
-            } else {
-                personalizedGreeting.innerHTML = '';
-            }
-            updateShareLink();
-        });
-
-        // WhatsApp Share
-        const shareBtn = document.getElementById('shareBtn');
-
-        function updateShareLink() {
-            const name = nameInput.value.trim();
-            const baseMessage = `*Selamat Idul Fitri 1447H* 🌙%0A%0A` +
-                `Saya *Ashari Saefataher* mengucapkan:%0A%0A` +
-                `Minal Aidzin Wal Faidzin%0A` +
-                `Mohon Maaf Lahir dan Batin%0A%0A` +
-                `Taqabbalallahu minna wa minkum,%0A` +
-                `shiyamana wa shiyamakum,%0A` +
-                `ja'ananallahu wa iyyakum minal 'aidin wal faizin.%0A%0A`;
-            
-            const personalMessage = name ? `_Kepada ${name}_%0A%0A` : '';
-            const closing = `Semoga Allah SWT menerima amal ibadah kita semua. 🙏%0A%0A` +
-                `Dari: Ashari Saefataher`;
-            
-            const fullMessage = baseMessage + personalMessage + closing;
-            shareBtn.href = `https://wa.me/?text=${fullMessage}`;
-        }
-
-        // Initialize share link
-        updateShareLink();
-
         // Add smooth scroll behavior
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
